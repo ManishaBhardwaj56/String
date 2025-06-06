@@ -1,0 +1,61 @@
+Maximum Frequency Character
+Given a string s containing lowercase alphabets, return the character with the highest occurrence in s.
+
+If there are multiple such characters, then return the lexicographically smallest one of them.
+
+Input Format
+The only line of the input contains the string s.
+
+Output Format
+Print the maximal occurring character in the string s. If there are multiple, print the lexicographically minimum one.
+
+Example 1
+Input
+
+abbbc
+Output
+
+b
+Explanation
+
+Here, a occurs 1 time, c occurs 1 time, and b occurs 3 times. Hence our answer for this is b.
+
+Example 2
+Input
+
+aabbbccc
+Output
+
+b
+Constraints
+1 < s.length() < 100
+
+import java.util.*;
+
+public class Main {
+    
+     static char MaximumFrequencyChar(String s) {
+        //Write your code here
+        int arr[] = new int[26];
+    
+        for(int i =0; i<s.length(); i++){
+            char ch =s.charAt(i);
+            arr[ch-'a']++;
+        }
+        int max = arr[0];
+        int index =0;
+        for(int i=0; i<26; i++){
+            if(max<arr[i]){
+                max = arr[i];
+                index =i;
+            }
+        }
+        return (char)(index+'a');
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String s = scanner.nextLine();
+        System.out.println(MaximumFrequencyChar(s));
+    }
+}
